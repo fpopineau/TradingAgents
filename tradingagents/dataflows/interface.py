@@ -23,6 +23,17 @@ from .alpha_vantage import (
     get_global_news as get_alpha_vantage_global_news,
 )
 from .alpha_vantage_common import AlphaVantageRateLimitError
+from .ib import (
+    get_stock_data as get_ib_stock_data,
+    get_indicators as get_ib_indicators,
+    get_fundamentals as get_ib_fundamentals,
+    get_balance_sheet as get_ib_balance_sheet,
+    get_cashflow as get_ib_cashflow,
+    get_income_statement as get_ib_income_statement,
+    get_insider_transactions as get_ib_insider_transactions,
+    get_news as get_ib_news,
+    get_global_news as get_ib_global_news,
+)
 
 # Configuration and routing logic
 from .config import get_config
@@ -63,6 +74,7 @@ TOOLS_CATEGORIES = {
 VENDOR_LIST = [
     "yfinance",
     "alpha_vantage",
+    "ib",
 ]
 
 # Mapping of methods to their vendor-specific implementations
@@ -71,41 +83,50 @@ VENDOR_METHODS = {
     "get_stock_data": {
         "alpha_vantage": get_alpha_vantage_stock,
         "yfinance": get_YFin_data_online,
+        "ib": get_ib_stock_data,
     },
     # technical_indicators
     "get_indicators": {
         "alpha_vantage": get_alpha_vantage_indicator,
         "yfinance": get_stock_stats_indicators_window,
+        "ib": get_ib_indicators,
     },
     # fundamental_data
     "get_fundamentals": {
         "alpha_vantage": get_alpha_vantage_fundamentals,
         "yfinance": get_yfinance_fundamentals,
+        "ib": get_ib_fundamentals,
     },
     "get_balance_sheet": {
         "alpha_vantage": get_alpha_vantage_balance_sheet,
         "yfinance": get_yfinance_balance_sheet,
+        "ib": get_ib_balance_sheet,
     },
     "get_cashflow": {
         "alpha_vantage": get_alpha_vantage_cashflow,
         "yfinance": get_yfinance_cashflow,
+        "ib": get_ib_cashflow,
     },
     "get_income_statement": {
         "alpha_vantage": get_alpha_vantage_income_statement,
         "yfinance": get_yfinance_income_statement,
+        "ib": get_ib_income_statement,
     },
     # news_data
     "get_news": {
         "alpha_vantage": get_alpha_vantage_news,
         "yfinance": get_news_yfinance,
+        "ib": get_ib_news,
     },
     "get_global_news": {
         "yfinance": get_global_news_yfinance,
         "alpha_vantage": get_alpha_vantage_global_news,
+        "ib": get_ib_global_news,
     },
     "get_insider_transactions": {
         "alpha_vantage": get_alpha_vantage_insider_transactions,
         "yfinance": get_yfinance_insider_transactions,
+        "ib": get_ib_insider_transactions,
     },
 }
 

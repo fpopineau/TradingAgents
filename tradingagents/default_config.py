@@ -38,4 +38,8 @@ DEFAULT_CONFIG = {
     "tool_vendors": {
         # Example: "get_stock_data": "alpha_vantage",  # Override category default
     },
+    # Interactive Brokers connection (used when any data_vendor is set to "ib")
+    "ib_host": "127.0.0.1",
+    "ib_port": 7497,        # TWS paper: 7497 | TWS live: 7496 | Gateway paper: 4002 | Gateway live: 4001
+    "ib_client_id": 1,
 }
